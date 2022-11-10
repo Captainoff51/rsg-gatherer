@@ -1,4 +1,5 @@
 local QRCore = exports['qr-core']:GetCoreObject()
+local cuttingstarted = false
 local trees
 
 ---------------------------------------------------------------------------------------
@@ -23,15 +24,20 @@ end)
 -- do woodcutting need axe
 RegisterNetEvent('rsg-gatherer:clent:dowoodcutting')
 AddEventHandler('rsg-gatherer:clent:dowoodcutting', function()
-	local hasItem = QRCore.Functions.HasItem('axe', 1)
-	if hasItem then
-		--TaskStartScenarioInPlace(ped, `EA_WORLD_HUMAN_TREE_CHOP_NEW`, 0, true)
-		TaskStartScenarioInPlace(PlayerPedId(), GetHashKey('EA_WORLD_HUMAN_TREE_CHOP_NEW'), -1, true, false, false, false)
-		Wait(30000)
-		ClearPedTasksImmediately(PlayerPedId(-1))
-		TriggerServerEvent('rsg-gatherer:server:giveWoodReward')
+	if cuttingstarted == false then
+		local hasItem = QRCore.Functions.HasItem('axe', 1)
+		if hasItem then
+			cuttingstarted = true
+			TaskStartScenarioInPlace(PlayerPedId(), GetHashKey('EA_WORLD_HUMAN_TREE_CHOP_NEW'), -1, true, false, false, false)
+			Wait(30000)
+			ClearPedTasksImmediately(PlayerPedId(-1))
+			TriggerServerEvent('rsg-gatherer:server:giveWoodReward')
+			cuttingstarted = false
+		else
+			QRCore.Functions.Notify('you don\'t have an axe!', 'error')
+		end
 	else
-		QRCore.Functions.Notify('you don\'t have an axe!', 'error')
+		QRCore.Functions.Notify('you are busy at the moment!', 'primary')
 	end
 end)
 

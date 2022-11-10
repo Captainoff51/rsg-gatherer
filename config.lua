@@ -8,4 +8,5 @@ Config.TreeLocations = {
     {name = 'Tree',	treeType = "tree4",	coords = vector3(-1703.829, -309.0387, 178.11149),	showblip = true}, -- near strawberry
 	{name = 'Tree',	treeType = "tree5",	coords = vector3(2747.6904, 1404.0628, 99.600639),	showblip = true}, -- near annesburg
 	{name = 'Tree',	treeType = "tree6",	coords = vector3(2728.6862, 1303.8863, 94.96566),	showblip = true}, -- near annesburg
+	-- add more as required
 }
