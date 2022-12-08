@@ -6,12 +6,12 @@ author 'RexShack#3041'
 description 'rsg-gatherer'
 
 client_scripts {
-	'client/client.lua',
-	'config.lua'
+    'client/client.lua',
+    'config.lua'
 }
 
 server_scripts {
-	'server/server.lua'
+    'server/server.lua'
 }
 
 lua54 'yes'
