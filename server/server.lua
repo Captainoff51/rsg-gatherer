@@ -7,7 +7,7 @@ AddEventHandler('rsg-gatherer:server:giveWoodReward', function()
     local Player = QRCore.Functions.GetPlayer(src)
     local randomNumber = math.random(1,100)
     if randomNumber > 80 then
-        Player.Functions.AddItem('axe', 1)
+        Player.Functions.RemoveItem('axe', 1)
         TriggerEvent("inventory:client:ItemBox", QRCore.Shared.Items["axe"], "remove")
         TriggerClientEvent('QRCore:Notify', src, 'your axe is broken!', 'error')
     else
