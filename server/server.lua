@@ -1,19 +1,19 @@
-local QRCore = exports['qr-core']:GetCoreObject()
+local RSGCore = exports['rsg-core']:GetCoreObject()
 
 -- give wood reward
 RegisterServerEvent('rsg-gatherer:server:giveWoodReward')
 AddEventHandler('rsg-gatherer:server:giveWoodReward', function()
     local src = source
-    local Player = QRCore.Functions.GetPlayer(src)
+    local Player = RSGCore.Functions.GetPlayer(src)
     local randomNumber = math.random(1,100)
     if randomNumber > 80 then
         Player.Functions.RemoveItem('axe', 1)
-        TriggerEvent("inventory:client:ItemBox", QRCore.Shared.Items["axe"], "remove")
-        TriggerClientEvent('QRCore:Notify', src, 'your axe is broken!', 'error')
+        TriggerEvent("inventory:client:ItemBox", RSGCore.Shared.Items["axe"], "remove")
+        TriggerClientEvent('RSGCore:Notify', src, 'your axe is broken!', 'error')
     else
         local givewood = math.random(1,3)
         Player.Functions.AddItem('wood', givewood)
-        TriggerClientEvent('inventory:client:ItemBox', src, QRCore.Shared.Items['wood'], "add")
-        TriggerClientEvent('QRCore:Notify', src, 'you chopped '..givewood..' wood', 'success')
+        TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['wood'], "add")
+        TriggerClientEvent('RSGCore:Notify', src, 'you chopped '..givewood..' wood', 'success')
     end
 end)
