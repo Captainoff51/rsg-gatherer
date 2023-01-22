@@ -9,11 +9,11 @@ AddEventHandler('rsg-gatherer:server:giveWoodReward', function()
     if randomNumber > 80 then
         Player.Functions.RemoveItem('axe', 1)
         TriggerEvent("inventory:client:ItemBox", RSGCore.Shared.Items["axe"], "remove")
-        TriggerClientEvent('RSGCore:Notify', src, 'your axe is broken!', 'error')
+        TriggerClientEvent('RSGCore:Notify', src, Lang:t('error.your_axe_is_broken'), 'error')
     else
         local givewood = math.random(1,3)
         Player.Functions.AddItem('wood', givewood)
         TriggerClientEvent('inventory:client:ItemBox', src, RSGCore.Shared.Items['wood'], "add")
-        TriggerClientEvent('RSGCore:Notify', src, 'you chopped '..givewood..' wood', 'success')
+        TriggerClientEvent('RSGCore:Notify', src, Lang:t('success.you_chopped_wood',{givewood = givewood}), 'success')
     end
 end)

@@ -7,7 +7,7 @@ local trees
 -- woodcutter tree prompts
 Citizen.CreateThread(function()
     for trees, v in pairs(Config.TreeLocations) do
-        exports['rsg-core']:createPrompt(v.treeType, v.coords, RSGCore.Shared.Keybinds['J'], 'Start Choping ' .. v.name, {
+        exports['rsg-core']:createPrompt(v.treeType, v.coords, RSGCore.Shared.Keybinds['J'], Lang:t('menu.start_choping') .. v.name, {
             type = 'client',
             event = 'rsg-gatherer:clent:dowoodcutting',
             args = {},
@@ -34,10 +34,10 @@ AddEventHandler('rsg-gatherer:clent:dowoodcutting', function()
             TriggerServerEvent('rsg-gatherer:server:giveWoodReward')
             cuttingstarted = false
         else
-            RSGCore.Functions.Notify('you don\'t have an axe!', 'error')
+            RSGCore.Functions.Notify(Lang:t('error.you_dont_have_an_axe'), 'error')
         end
     else
-        RSGCore.Functions.Notify('you are busy at the moment!', 'primary')
+        RSGCore.Functions.Notify(Lang:t('primary.you_are_busy_at_the_moment'), 'primary')
     end
 end)
 
