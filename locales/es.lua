@@ -13,10 +13,10 @@ local Translations = {
         start_choping  = 'Empezar a picar ',
     },
     commands = {
-		    var = 'text goes here',
+            var = 'text goes here',
     },
     progressbar = {
-		    var = 'text goes here',
+            var = 'text goes here',
     },
     text = {
         tree = 'Arbol'
